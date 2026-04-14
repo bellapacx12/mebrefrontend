@@ -219,7 +219,6 @@ export const WebSocketProvider = ({ stake, telegramId, children }: Props) => {
   // --------------------
   // Effect
   // --------------------
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     connectWebSocket();
 
