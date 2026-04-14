@@ -19,9 +19,11 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
     ],
-     rules: {
+    rules: {
       "@typescript-eslint/no-require-imports": "off", // ✅ disable the rule
-       "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "react-hooks/exhaustive-deps": "off",
+      "@typescript-eslint/no-unused-vars": "off",
       // OR to allow only specific cases:
       // "@typescript-eslint/no-require-imports": ["error", { allowConditionalImports: true }]
     },

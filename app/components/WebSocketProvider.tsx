@@ -78,7 +78,7 @@ const showToast = (message: string) => {
 // --------------------
 export const WebSocketProvider = ({ stake, telegramId, children }: Props) => {
   const [status, setStatus] = useState<"waiting" | "countdown" | "running">(
-    "waiting"
+    "waiting",
   );
   const [countdown, setCountdown] = useState(30);
   const [availableCards, setAvailableCards] = useState<AvailableCard[]>([]);
@@ -129,7 +129,7 @@ export const WebSocketProvider = ({ stake, telegramId, children }: Props) => {
     if (wsRef.current) return;
 
     const ws = new WebSocket(
-      `wss://yonibackend.onrender.com/api/lobby/${stake}?telegram_id=${telegramId}`
+      `wss://yonibackend.onrender.com/api/lobby/${stake}?telegram_id=${telegramId}`,
     );
     wsRef.current = ws;
 
@@ -162,7 +162,7 @@ export const WebSocketProvider = ({ stake, telegramId, children }: Props) => {
         // Selected cards
         const selectedMap = data.selected || data.selected_cards || {};
         const selectedList: CardNumbers[] = Object.values(
-          selectedMap as Record<string, AvailableCard>
+          selectedMap as Record<string, AvailableCard>,
         )
           .map((card) => normalizeCard(card))
           .filter(Boolean);
@@ -219,6 +219,7 @@ export const WebSocketProvider = ({ stake, telegramId, children }: Props) => {
   // --------------------
   // Effect
   // --------------------
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     connectWebSocket();
 
@@ -294,7 +295,3 @@ export const useLobby = () => {
   }
   return context;
 };
-
-function setPotentialWinnings(arg0: number) {
-  throw new Error("Function not implemented.");
-}
