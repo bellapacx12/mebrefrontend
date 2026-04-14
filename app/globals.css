@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+:root {
+  --color-mint-500: oklch(0.63 0.2 250); /* base blue */
+  --color-mint-400: oklch(0.7 0.18 250); /* lighter blue */
+  --color-mint-600: oklch(0.55 0.22 250); /* darker blue */
+}
+
+/* Example usage */
+body {
+  background-color: var(--color-mint-500);
+  color: white;
+}
