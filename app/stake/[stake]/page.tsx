@@ -1,25 +1,22 @@
 // app/stake/[stake]/page.tsx (Server Component)
-import React from "react";
+"use client";
+
+import { useParams, useSearchParams } from "next/navigation";
 import { WebSocketProvider } from "../../components/WebSocketProvider";
 import LobbyScreen from "../../components/LobbyScreen";
 import Header from "@/app/components/Header";
 
-interface PageProps {
-  params: { stake: string };
-  searchParams?: { user?: string }; // optional query
-}
+export default function StakePage() {
+  const params = useParams();
+  const searchParams = useSearchParams();
 
-export default function StakePage({ params, searchParams }: PageProps) {
-  const rawStake = params?.stake;
-  const stake = rawStake ? Number(rawStake) : NaN;
-
-  const telegramId =
-    typeof searchParams?.user === "string" ? searchParams.user : "guest";
+  const stake = Number(params.stake);
+  const telegramId = searchParams.get("user") || "guest";
 
   console.log("stake:", stake);
   console.log("telegramId:", telegramId);
 
-  if (!rawStake || isNaN(stake)) {
+  if (!params.stake || isNaN(stake)) {
     return <div>Invalid stake</div>;
   }
 
