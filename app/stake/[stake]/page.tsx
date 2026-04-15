@@ -10,8 +10,18 @@ interface PageProps {
 }
 
 export default function StakePage({ params, searchParams }: PageProps) {
-  const stake = Number(params.stake);
-  const telegramId = searchParams?.user || "guest";
+  const rawStake = params?.stake;
+  const stake = rawStake ? Number(rawStake) : NaN;
+
+  const telegramId =
+    typeof searchParams?.user === "string" ? searchParams.user : "guest";
+
+  console.log("stake:", stake);
+  console.log("telegramId:", telegramId);
+
+  if (!rawStake || isNaN(stake)) {
+    return <div>Invalid stake</div>;
+  }
 
   return (
     <WebSocketProvider stake={stake} telegramId={telegramId}>
