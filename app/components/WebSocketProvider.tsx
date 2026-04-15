@@ -129,7 +129,7 @@ export const WebSocketProvider = ({ stake, telegramId, children }: Props) => {
     if (wsRef.current) return;
 
     const ws = new WebSocket(
-      `wss://yonibackend.onrender.com/api/lobby/${stake}?telegram_id=${telegramId}`,
+      `wss://mebrebackend.onrender.com/api/lobby/${stake}?telegram_id=${telegramId}`,
     );
     wsRef.current = ws;
 
